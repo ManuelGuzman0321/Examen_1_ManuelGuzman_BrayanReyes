@@ -64,9 +64,16 @@ public class Interfaz extends JFrame {
 	 * Create the frame.
 	 */
 	public Interfaz() {
+		JPanel panel = new JPanel();
+		
+		panel.setVisible(false);
+		JLabel lblNewLabel_1_1 = new JLabel("Hospital Enrrique Baltodano Briceño");
+		JLabel lblNewLabel_1 = new JLabel("BIENVENIDO");
+		lblNewLabel_1_1.setVisible(false);
+		lblNewLabel_1.setVisible(false);
 		JPanel PanelManual = new JPanel();
-		JPanel PanelFondo = new JPanel();
 		JPanel PanelMenu = new JPanel();
+		PanelMenu.setVisible(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 728, 410);
 		contentPane = new JPanel();
@@ -75,11 +82,6 @@ public class Interfaz extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		PanelManual.setVisible(false);
-		
-		
-		JLabel medida = new JLabel("xx");
-		JPanel PanelIngreso = new JPanel();
-		PanelIngreso.setVisible(false);
 		JPanel PanelMostrar = new JPanel();
 		PanelMostrar.setVisible(false);
 		JPanel PanelAdmin = new JPanel();
@@ -87,10 +89,186 @@ public class Interfaz extends JFrame {
 		PanelAdmin.setVisible(false);
 		JPanel PanelOtorgar = new JPanel();
 		PanelOtorgar.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		PanelOtorgar.setVisible(false);
+		PanelOtorgar.setVisible(true);
 		
 		
-		PanelOtorgar.setBounds(367, 29, 265, 286);
+		JLabel medida = new JLabel("xx");
+		JPanel PanelIngreso = new JPanel();
+		PanelIngreso.setVisible(false);
+		
+		
+		PanelIngreso.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		PanelIngreso.setBounds(10, 10, 622, 353);
+		contentPane.add(PanelIngreso);
+		PanelIngreso.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("Nombre del asegurado:");
+		lblNewLabel_2.setBounds(10, 10, 141, 13);
+		PanelIngreso.add(lblNewLabel_2);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(10, 33, 129, 19);
+		PanelIngreso.add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("Numero de cedula:");
+		lblNewLabel_2_1.setBounds(10, 62, 141, 13);
+		PanelIngreso.add(lblNewLabel_2_1);
+		
+		txtCedula = new JTextField();
+		txtCedula.setColumns(10);
+		txtCedula.setBounds(10, 85, 129, 19);
+		PanelIngreso.add(txtCedula);
+		
+		JLabel lblNewLabel_3 = new JLabel("Comunidad de EBAIS:");
+		lblNewLabel_3.setBounds(10, 114, 141, 13);
+		PanelIngreso.add(lblNewLabel_3);
+		
+		JComboBox ComunidadEBAIS = new JComboBox();
+		ComunidadEBAIS.setModel(new DefaultComboBoxModel(new String[] {"Corazon de Jesus", "Nazareth", "Moracia", "La Victoria", "Guadalupe", "Barrio la Cruz", "Felipe Perez"}));
+		ComunidadEBAIS.setBounds(10, 137, 129, 21);
+		PanelIngreso.add(ComunidadEBAIS);
+		
+		JSlider Sedad = new JSlider();
+		Sedad.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				
+				medida.setText(Integer.toString(Sedad.getValue()));
+				
+			}
+		});
+		Sedad.setMajorTickSpacing(10);
+		Sedad.setMinorTickSpacing(10);
+		Sedad.setSnapToTicks(true);
+		Sedad.setPaintTicks(true);
+		Sedad.setPaintLabels(true);
+		Sedad.setBounds(10, 295, 211, 37);
+		PanelIngreso.add(Sedad);
+		
+		JLabel medidor = new JLabel("Indique la edad:");
+		medidor.setBounds(10, 272, 141, 13);
+		PanelIngreso.add(medidor);
+		
+		JLabel lblNewLabel_5 = new JLabel("Consulta:");
+		lblNewLabel_5.setBounds(10, 168, 129, 13);
+		PanelIngreso.add(lblNewLabel_5);
+		
+		JComboBox Padecimientos = new JComboBox();
+		Padecimientos.setModel(new DefaultComboBoxModel(new String[] {"Consulta General", "Odontologia", "Cirugia Menor", "Cuidados Prenatal", "Emergencia"}));
+		Padecimientos.setBounds(10, 191, 129, 21);
+		PanelIngreso.add(Padecimientos);
+		
+		JLabel lblNewLabel_6 = new JLabel("Sexo:");
+		lblNewLabel_6.setBounds(10, 220, 80, 13);
+		PanelIngreso.add(lblNewLabel_6);
+		
+		JComboBox SexoBox = new JComboBox();
+		SexoBox.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
+		SexoBox.setBounds(10, 241, 129, 21);
+		PanelIngreso.add(SexoBox);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(0, 0, 0));
+		panel_1.setBounds(285, -1, 4, 352);
+		PanelIngreso.add(panel_1);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(298, 10, 313, 267);
+		PanelIngreso.add(scrollPane);
+		
+		JTextArea TXTIngre = new JTextArea();
+		TXTIngre.setEditable(false);
+		scrollPane.setViewportView(TXTIngre);
+		
+		JButton btnVolverIng = new JButton("Volver");
+		btnVolverIng.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				PanelIngreso.setVisible(false);
+				PanelMenu.setVisible(true);
+				
+				TXTIngre.setText(null);
+						txtNombre.setText(null);
+						txtCedula.setText(null);
+						ComunidadEBAIS.setSelectedItem("Corazon de Jesus");
+				         Padecimientos.setSelectedItem("Consulta General");
+				         SexoBox.setSelectedItem("Hombre");
+				         Sedad.setValue(50);
+				         medida.setText("xx");
+				
+				
+			}
+		});
+		btnVolverIng.setBounds(304, 304, 85, 21);
+		PanelIngreso.add(btnVolverIng);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nom, ced, ed, comu, tconsul, sexo;
+				
+				nom = txtNombre.getText();
+				ced = txtCedula.getText();
+				ed = Integer.toString(Sedad.getValue());
+				comu = (String) ComunidadEBAIS.getSelectedItem();
+				tconsul = (String) Padecimientos.getSelectedItem();
+				sexo = (String) SexoBox.getSelectedItem();
+				
+				CR7.add(new Asegurado (nom, ced, ed, comu, tconsul, sexo));
+				
+				PanelMenu.setVisible(true);
+				PanelIngreso.setVisible(false);
+				
+				JOptionPane.showMessageDialog(null,"INFORMACION DEL ASEGURADO(A) GUARDADO CON EXITO!!");
+				
+				
+				TXTIngre.setText(null);
+				txtNombre.setText(null);
+				txtCedula.setText(null);
+				ComunidadEBAIS.setSelectedItem("Corazon de Jesus");
+		         Padecimientos.setSelectedItem("Consulta General");
+		         SexoBox.setSelectedItem("Hombre");
+		         Sedad.setValue(50);
+		         medida.setText("xx");
+				
+			}
+			
+			
+			
+			//TODO: aqui se realiza el guardado de los datos...
+		});
+		btnGuardar.setBounds(522, 304, 85, 21);
+		PanelIngreso.add(btnGuardar);
+		
+		JButton btnMostrarPlan = new JButton("Mostrar");
+		btnMostrarPlan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				TXTIngre.setText("==================================="+"\n"+
+				                 "Nombre del asegurado(a): "+"\t"+txtNombre.getText()+"\n"+
+						         "Numero de cedula: "+"\t"+txtCedula.getText()+"\n"+
+				                 "EBAIS correspondiente: "+"\t"+ComunidadEBAIS.getSelectedItem()+"\n"+
+						         "Tipo de consulta: "+"\t"+Padecimientos.getSelectedItem()+"\n"+
+				                 "Sexo del asegurado(a): "+"\t"+SexoBox.getSelectedItem()+"\n"+
+						         "Edad: "+"\t"+"\t"+Integer.toString(Sedad.getValue())+"\n"+
+						         "===================================");
+				
+				
+			}
+			
+			
+		});//TODO: Esta parte de codigo sirve para mostrar la plantilla de los datos que se van a guardar...
+		btnMostrarPlan.setBounds(414, 304, 85, 21);
+		PanelIngreso.add(btnMostrarPlan);
+		
+		
+		medida.setBounds(105, 272, 45, 13);
+		PanelIngreso.add(medida);
+		
+		
+		PanelOtorgar.setBounds(185, 29, 278, 286);
 		contentPane.add(PanelOtorgar);
 		PanelOtorgar.setLayout(null);
 		
@@ -124,8 +302,10 @@ public class Interfaz extends JFrame {
 				if("18122022".equals(Contraseña.getText())) {
 					
 					PanelOtorgar.setVisible(false);
-					PanelAdmin.setVisible(true);
-					PanelMenu.setVisible(false);
+					PanelMenu.setVisible(true);
+					lblNewLabel_1.setVisible(true);
+					lblNewLabel_1_1.setVisible(true);
+					panel.setVisible(true);
 					Contraseña.setText(null);
 					NomUSA = NombreUSA.getText();
 					NombreUSA.setText(null);
@@ -134,8 +314,8 @@ public class Interfaz extends JFrame {
 				}
 				else {
 					
-					PanelOtorgar.setVisible(false);
-					PanelMenu.setVisible(true);
+					
+					
 					JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA!!");
 					Contraseña.setText(null);
 					NombreUSA.setText(null);
@@ -382,177 +562,6 @@ public class Interfaz extends JFrame {
 		PanelMostrar.add(panel_1_1);
 		
 		
-		PanelIngreso.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		PanelIngreso.setBounds(10, 10, 622, 353);
-		contentPane.add(PanelIngreso);
-		PanelIngreso.setLayout(null);
-		
-		JLabel lblNewLabel_2 = new JLabel("Nombre del asegurado:");
-		lblNewLabel_2.setBounds(10, 10, 141, 13);
-		PanelIngreso.add(lblNewLabel_2);
-		
-		txtNombre = new JTextField();
-		txtNombre.setBounds(10, 33, 129, 19);
-		PanelIngreso.add(txtNombre);
-		txtNombre.setColumns(10);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Numero de cedula:");
-		lblNewLabel_2_1.setBounds(10, 62, 141, 13);
-		PanelIngreso.add(lblNewLabel_2_1);
-		
-		txtCedula = new JTextField();
-		txtCedula.setColumns(10);
-		txtCedula.setBounds(10, 85, 129, 19);
-		PanelIngreso.add(txtCedula);
-		
-		JLabel lblNewLabel_3 = new JLabel("Comunidad de EBAIS:");
-		lblNewLabel_3.setBounds(10, 114, 141, 13);
-		PanelIngreso.add(lblNewLabel_3);
-		
-		JComboBox ComunidadEBAIS = new JComboBox();
-		ComunidadEBAIS.setModel(new DefaultComboBoxModel(new String[] {"Corazon de Jesus", "Nazareth", "Moracia", "La Victoria", "Guadalupe", "Barrio la Cruz", "Felipe Perez"}));
-		ComunidadEBAIS.setBounds(10, 137, 129, 21);
-		PanelIngreso.add(ComunidadEBAIS);
-		
-		JSlider Sedad = new JSlider();
-		Sedad.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				
-				medida.setText(Integer.toString(Sedad.getValue()));
-				
-			}
-		});
-		Sedad.setMajorTickSpacing(10);
-		Sedad.setMinorTickSpacing(10);
-		Sedad.setSnapToTicks(true);
-		Sedad.setPaintTicks(true);
-		Sedad.setPaintLabels(true);
-		Sedad.setBounds(10, 295, 211, 37);
-		PanelIngreso.add(Sedad);
-		
-		JLabel medidor = new JLabel("Indique la edad:");
-		medidor.setBounds(10, 272, 141, 13);
-		PanelIngreso.add(medidor);
-		
-		JLabel lblNewLabel_5 = new JLabel("Consulta:");
-		lblNewLabel_5.setBounds(10, 168, 129, 13);
-		PanelIngreso.add(lblNewLabel_5);
-		
-		JComboBox Padecimientos = new JComboBox();
-		Padecimientos.setModel(new DefaultComboBoxModel(new String[] {"Consulta General", "Odontologia", "Cirugia Menor", "Cuidados Prenatal", "Emergencia"}));
-		Padecimientos.setBounds(10, 191, 129, 21);
-		PanelIngreso.add(Padecimientos);
-		
-		JLabel lblNewLabel_6 = new JLabel("Sexo:");
-		lblNewLabel_6.setBounds(10, 220, 80, 13);
-		PanelIngreso.add(lblNewLabel_6);
-		
-		JComboBox SexoBox = new JComboBox();
-		SexoBox.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
-		SexoBox.setBounds(10, 241, 129, 21);
-		PanelIngreso.add(SexoBox);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 0, 0));
-		panel_1.setBounds(285, -1, 4, 352);
-		PanelIngreso.add(panel_1);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(298, 10, 313, 267);
-		PanelIngreso.add(scrollPane);
-		
-		JTextArea TXTIngre = new JTextArea();
-		TXTIngre.setEditable(false);
-		scrollPane.setViewportView(TXTIngre);
-		
-		JButton btnVolverIng = new JButton("Volver");
-		btnVolverIng.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				PanelIngreso.setVisible(false);
-				PanelMenu.setVisible(true);
-				
-				TXTIngre.setText(null);
-						txtNombre.setText(null);
-						txtCedula.setText(null);
-						ComunidadEBAIS.setSelectedItem("Corazon de Jesus");
-				         Padecimientos.setSelectedItem("Consulta General");
-				         SexoBox.setSelectedItem("Hombre");
-				         Sedad.setValue(50);
-				         medida.setText("xx");
-				
-				
-			}
-		});
-		btnVolverIng.setBounds(304, 304, 85, 21);
-		PanelIngreso.add(btnVolverIng);
-		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String nom, ced, ed, comu, tconsul, sexo;
-				
-				nom = txtNombre.getText();
-				ced = txtCedula.getText();
-				ed = Integer.toString(Sedad.getValue());
-				comu = (String) ComunidadEBAIS.getSelectedItem();
-				tconsul = (String) Padecimientos.getSelectedItem();
-				sexo = (String) SexoBox.getSelectedItem();
-				
-				CR7.add(new Asegurado (nom, ced, ed, comu, tconsul, sexo));
-				
-				PanelMenu.setVisible(true);
-				PanelIngreso.setVisible(false);
-				
-				JOptionPane.showMessageDialog(null,"INFORMACION DEL ASEGURADO(A) GUARDADO CON EXITO!!");
-				
-				
-				TXTIngre.setText(null);
-				txtNombre.setText(null);
-				txtCedula.setText(null);
-				ComunidadEBAIS.setSelectedItem("Corazon de Jesus");
-		         Padecimientos.setSelectedItem("Consulta General");
-		         SexoBox.setSelectedItem("Hombre");
-		         Sedad.setValue(50);
-		         medida.setText("xx");
-				
-			}
-			
-			
-			
-			//TODO: aqui se realiza el guardado de los datos...
-		});
-		btnGuardar.setBounds(522, 304, 85, 21);
-		PanelIngreso.add(btnGuardar);
-		
-		JButton btnMostrarPlan = new JButton("Mostrar");
-		btnMostrarPlan.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				TXTIngre.setText("==================================="+"\n"+
-				                 "Nombre del asegurado(a): "+"\t"+txtNombre.getText()+"\n"+
-						         "Numero de cedula: "+"\t"+txtCedula.getText()+"\n"+
-				                 "EBAIS correspondiente: "+"\t"+ComunidadEBAIS.getSelectedItem()+"\n"+
-						         "Tipo de consulta: "+"\t"+Padecimientos.getSelectedItem()+"\n"+
-				                 "Sexo del asegurado(a): "+"\t"+SexoBox.getSelectedItem()+"\n"+
-						         "Edad: "+"\t"+"\t"+Integer.toString(Sedad.getValue())+"\n"+
-						         "===================================");
-				
-				
-			}
-			
-			
-		});//TODO: Esta parte de codigo sirve para mostrar la plantilla de los datos que se van a guardar...
-		btnMostrarPlan.setBounds(414, 304, 85, 21);
-		PanelIngreso.add(btnMostrarPlan);
-		
-		
-		medida.setBounds(105, 272, 45, 13);
-		PanelIngreso.add(medida);
-		
-		
 		PanelManual.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		PanelManual.setBounds(335, 10, 294, 353);
 		contentPane.add(PanelManual);
@@ -620,9 +629,9 @@ public class Interfaz extends JFrame {
 		btnDarCitas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				PanelOtorgar.setVisible(true);
+				PanelAdmin.setVisible(true);
 				PanelMenu.setVisible(false);
-				
+							
 			}
 		});
 		btnDarCitas.setBackground(new Color(255, 255, 255));
@@ -661,21 +670,24 @@ public class Interfaz extends JFrame {
 		PanelMenu.add(btnCerrarPrograma);
 		
 		
+		JPanel PanelFondo = new JPanel();
+		
+		
 		PanelFondo.setBounds(0, 0, 714, 373);
 		contentPane.add(PanelFondo);
 		PanelFondo.setLayout(null);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Hospital Enrrique Baltodano Briceño");
+		
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1_1.setBounds(10, 321, 360, 52);
 		PanelFondo.add(lblNewLabel_1_1);
 		
-		JPanel panel = new JPanel();
+		
 		panel.setBounds(10, 327, 319, 6);
 		PanelFondo.add(panel);
 		
-		JLabel lblNewLabel_1 = new JLabel("BIENVENIDO");
+		
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 43));
 		lblNewLabel_1.setBounds(10, 275, 360, 52);
@@ -685,5 +697,6 @@ public class Interfaz extends JFrame {
 		lblNewLabel.setBounds(0, 0, 728, 410);
 		lblNewLabel.setIcon(new ImageIcon(Interfaz.class.getResource("/imagenes/sunset-8k-forest-4k-wallpaper-preview.jpg")));
 		PanelFondo.add(lblNewLabel);
+	
 	}
 }
