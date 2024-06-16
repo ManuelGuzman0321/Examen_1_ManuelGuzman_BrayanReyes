@@ -647,9 +647,9 @@ public class Interfaz extends JFrame {
 				PanelMenu.setVisible(false);
 				PanelManual.setVisible(true);
 				
-				
-				
-			}//TODO: Esta porcion de codigo, es para la muestra de la guia de uso de la aplicacion...
+			//Hola
+
+			}//TODO: Esta  porcion de codigo, es para la muestra de la guia de uso de la aplicacion...
 		});
 		btnComoUtilizar.setBackground(new Color(255, 255, 255));
 		btnComoUtilizar.setIcon(new ImageIcon(Interfaz.class.getResource("/botones/icons8-ayuda-50.png")));
@@ -661,7 +661,7 @@ public class Interfaz extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "'El unico modo de hacer un gran\ntrabajo es amar lo que haces'\n\n- Steve Jobs -");
 				System.exit(0);
-				
+				System.out.println("Cerrado el programa");
 			}
 		});
 		btnCerrarPrograma.setBackground(new Color(255, 255, 255));
